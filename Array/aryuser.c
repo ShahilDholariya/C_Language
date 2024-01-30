@@ -14,7 +14,7 @@ int main()
         printf("The current array is:\n");
     for ( i =0; i< size; i++)
     {
-        printf("%d\n", arr1[i]);
+        printf("%d", arr1[i]);
     }
     return 0;
 }
