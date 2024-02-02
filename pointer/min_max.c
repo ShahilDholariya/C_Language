@@ -1,11 +1,9 @@
 #include <stdio.h>
 
-void minmax(int *min, int *max, int size, int *a)
+void minmax(int *min, int *max, int size, int *a) // create a function for find max and min value
 {
     *min = a[0];
-    printf("%d",*min);
     *max = a[0];
-     printf("%d",*max);
     for (int i = 1; i < size; i++)
     {
         if (a[i] > *max)
@@ -35,7 +33,7 @@ void main()
     {
         printf("%d\n", a[i]);
     }
-    minmax(&min, &max, size, a);
+    minmax(&min, &max, size, a); 
     printf("Max number of my array is: %d\n", max);
     printf("Min number of my array is: %d\n", min);
 }
