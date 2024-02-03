@@ -11,7 +11,7 @@ int main()
 
     ptr = add; // initialization of function-pointer
 
-    int result = (*ptr)(10, 20); // call add function using function-pointer
+    int result = (*ptr)(10, 20); // call a function using function-pointer
 
     printf("sum is = %d\n", result);
 
