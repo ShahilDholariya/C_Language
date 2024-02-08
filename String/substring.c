@@ -15,6 +15,8 @@ int main()
         int j = 0;
         while (sub[j] != '\0')
         {
+            printf("str[%d] = %c\r\n", i, str[i]);
+            printf("sub[%d] = %c\r\n", j, sub[j]);
             if (str[i] == sub[j])
             {
                 i++;
@@ -27,7 +29,10 @@ int main()
         }
         if (sub[j] == '\0')
         {
+            printf("i=%d\r\n", i);
+            printf("j=%d\r\n", j);
             result = &str[i - j];
+            printf("str[%d]=%c\r\n", i - j, str[i - j]);
             break;
         }
     }
