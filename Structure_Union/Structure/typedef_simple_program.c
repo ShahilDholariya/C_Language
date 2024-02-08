@@ -5,11 +5,11 @@ typedef struct students
     char *name;
     int roll_no;
     float percentage;
-} stud; // Giving a new name to stucture
+} stud_t; // Giving a new name to stucture
 
 int main()
 {
-    stud s1, s2;
+    stud_t s1, s2;
     s1.name = "Hardik";
     s2.name = "Trupal";
     printf("student1 name = %s\n", s1.name);
