@@ -13,10 +13,10 @@ typedef struct
 } s; // size 4
 int main()
 {
-    // s s1;
-    // printf("%ld\n", sizeof(s1.e));
-    // printf("%ld\n", sizeof(s1.a));
-    // printf("%ld\n", sizeof(s1.f));
-    printf("%ld\n", sizeof(s));
+    s s1;
+    printf("sizeof(a)=%ld\n", sizeof(s1.a));
+    printf("sizeof(e)=%ld\n", sizeof(s1.e));
+    printf("sizeof(f)=%ld\n", sizeof(s1.f));
+    printf("Total sizeof(s)=%ld\n", sizeof(s));
     return 0;
 }

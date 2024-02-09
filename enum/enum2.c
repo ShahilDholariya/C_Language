@@ -39,7 +39,7 @@ void printDay(enum Day day)
         break;
     default:
         printf("Invalid day\n");
-        break;
+        break;    
     }
 }
 

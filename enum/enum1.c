@@ -11,17 +11,17 @@ enum Color
 int main()
 {
     // Declare a variable of type enum Color
-    enum Color myColor = GREEN;
+    enum Color mycolor = GREEN;
 
-    if (myColor == RED)
+    if (mycolor == RED)
     {
         printf("The color is red\n");
     }
-    else if (myColor == GREEN)
+    else if (mycolor == GREEN)
     {
         printf("The color is green\n");
     }
-    else if (myColor == BLUE)
+    else if (mycolor == BLUE)
     {
         printf("The color is blue\n");
     }
