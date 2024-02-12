@@ -7,7 +7,7 @@ int main()
 
     for (i = 0; i < 2; i++)
     {
-        printf("Enter an integer : ");
+        printf("Enter an 2 integer : ");
         scanf("%d", &ptr[i]);
     }
     ptr = (void *)realloc(ptr, 4 * sizeof(int)); // Memory allocation for two more integer

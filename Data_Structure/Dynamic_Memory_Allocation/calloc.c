@@ -6,7 +6,7 @@ int main()
     printf("Enter the number of integer:\n");
     scanf("%d", &n);
 
-    int *ptr = (void *)malloc(n * sizeof(int)); // Allocating Dynamic Memory to pointer
+    int *ptr = (void *)calloc(n, sizeof(int)); // Allocating Dynamic Memory to pointer
 
     for (i = 0; i < n; i++)
     {
