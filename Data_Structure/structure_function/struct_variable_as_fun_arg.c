@@ -16,7 +16,7 @@ int main()
     student_t s1 = {"sahil", 23, 90.00};
     student_t s2 = {"Trupal", 22, 90.00};
     report(s1);
-    printf("\n");
+    printf("\n")
     report(s2);
     return 0;
 }
