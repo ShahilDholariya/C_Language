@@ -9,31 +9,29 @@ int main()
     gets(sub);
     int length2 = strlen(sub);
     char *result;
-    int i;
-    for (i = 0; str[i] != '\0'; i++)
+    int i, j;
+    i = 0;
+    while (str[i] != '\0')
     {
-        int j = 0;
-        while (sub[j] != '\0')
+        j = 0;
+        // printf("str[%d] = %c\r\n", i, str[i]);
+        // printf("sub[%d] = %c\r\n", j, sub[j]);
+        while (str[i] == sub[j] && str[j] != '\0')
         {
-            printf("str[%d] = %c\r\n", i, str[i]);
-            printf("sub[%d] = %c\r\n", j, sub[j]);
-            if (str[i] == sub[j])
-            {
-                i++;
-                j++;
-            }
-            else
-            {
-                i++;
-            }
+            i++;
+            j++;
         }
         if (sub[j] == '\0')
         {
-            printf("i=%d\r\n", i);
-            printf("j=%d\r\n", j);
+            // printf("i=%d\r\n", i);
+            // printf("j=%d\r\n", j);
             result = &str[i - j];
-            printf("str[%d]=%c\r\n", i - j, str[i - j]);
+            // printf("str[%d]=%c\r\n", i - j, str[i - j]);
             break;
+        }
+        else
+        {
+            i++;
         }
     }
     if (result)
@@ -42,7 +40,7 @@ int main()
     }
     else
     {
-        printf("substring not found");
+        printf("substring not found\n");
     }
     return 0;
 }

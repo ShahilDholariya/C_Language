@@ -10,10 +10,11 @@ int main()
 
     if (divisor == 0)
     {
-        exit(EXIT_FAILURE);
+        printf("Not Possible\n");
+        exit(EXIT_FAILURE); // 1
     }
 
     result = dividend / divisor;
-    fprintf(stderr, "Value is : %d\n", result);
-        exit(EXIT_SUCCESS);
+    printf("Value is : %d\n", result);
+    exit(EXIT_SUCCESS); // 0
 }

@@ -6,13 +6,13 @@ int main()
 {
 
     FILE *fp;
-    int errno;
     fp = fopen("unexist.txt", "r");
 
     if (fp == NULL)
     {
         printf("Value of errno: %d\n", errno); // Print an error number
-        perror("Error printed by perror");     // Used to print error in string form
+        perror("Error printed by perror");     // Used to print errorno
+        fprintf(stderr, "Error opening file: %s\n", strerror(errno));
     }
     else
     {

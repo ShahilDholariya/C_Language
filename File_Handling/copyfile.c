@@ -17,7 +17,7 @@ int main()
         fputs(ch, destination);
     }
 
-    fclose(source);s
+    fclose(source);
     fclose(destination);
 
     return 0;
