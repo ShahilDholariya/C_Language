@@ -4,7 +4,11 @@ int main()
 {
     int i;
     int *ptr = (void *)malloc(2 * sizeof(int)); // Allocating Dynamic Memory to pointer
-
+    if (ptr == NULL)
+    {
+        printf("Memory is not allocated");
+        exit(1);
+    }
     for (i = 0; i < 2; i++)
     {
         printf("Enter an 2 integer : ");

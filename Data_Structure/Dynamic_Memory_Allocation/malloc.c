@@ -8,6 +8,11 @@ int main()
 
     int *ptr = (void *)malloc(n * sizeof(int)); // Allocating Dynamic Memory to pointer
 
+    if (ptr == NULL)
+    {
+        printf("Memory is not allocated");
+        exit(1);
+    }
     for (i = 0; i < n; i++)
     {
         printf("Enter an integer : ");
@@ -21,7 +26,7 @@ int main()
 
     // free(ptr);
     // ptr=NULL;
-  
+
     printf("\n");
     return 0;
 }
