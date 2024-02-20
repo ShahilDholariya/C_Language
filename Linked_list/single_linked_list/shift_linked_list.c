@@ -5,32 +5,31 @@ struct node
     int data;
     struct node *link;
 };
-void reverse(struct node **head)
+void shifting(struct node **head)
 {
-    if (head == NULL)
+    if (*head == NULL)
     {
-        printf("Memory is not assigned\n");
+        printf("List is an empty\n");
     }
-    struct node *prev, *current, *next;
+    struct node *current, *prev;
+    current = *head;
     prev = NULL;
-    current = next = *head;
-    while (next != NULL)
+    while (current->link != NULL)
     {
-        next = next->link;
-        current->link = prev;
         prev = current;
-        current = next;
+        current = current->link;
     }
-    *head = prev;
+    current->link = *head;
+    prev->link = NULL;
+    *head = current;
 }
 struct node *add_end(struct node *ptr, int data)
 {
     struct node *temp;
-
     temp = (struct node *)malloc(sizeof(struct node));
     if (temp == NULL)
     {
-        printf("Memory is not assigned\n");
+        printf("Link is an empty\n");
     }
     temp->data = data;
     temp->link = NULL;
@@ -40,17 +39,16 @@ struct node *add_end(struct node *ptr, int data)
 }
 int main()
 {
-    struct node *head, *ptr;  
+    struct node *head, *ptr;
     head = (struct node *)malloc(sizeof(struct node));
     if (head == NULL)
     {
         printf("Memory is not assigned\n");
     }
-    head->data = 10;
+    head->data = 20;
     head->link = NULL;
 
     ptr = head;
-    ptr = add_end(ptr, 20);
     ptr = add_end(ptr, 30);
     ptr = add_end(ptr, 40);
     ptr = head;
@@ -59,9 +57,8 @@ int main()
         printf("Data = %d\n", ptr->data);
         ptr = ptr->link;
     }
-
-    reverse(&head);
-    printf("Reversed List is:\n");
+    shifting(&head);
+    printf("After Shifting:\n");
     ptr = head;
     while (ptr != NULL)
     {

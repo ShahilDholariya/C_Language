@@ -12,27 +12,25 @@ void dlt_entire_list(struct node *head)
     {
         printf("List is an empty\n");
     }
-    else
+    while (ptr != NULL)
     {
-        while (ptr != NULL)
-        {
-            ptr = ptr->link;
-            free(head);
-            head = ptr;
-        }
-        printf("Delete Entire list\n");
+        ptr = ptr->link;
+        free(head);
+        head = ptr;
     }
+    printf("Delete Entire list\n");
 }
 struct node *add_end(struct node *ptr, int data)
 {
     struct node *temp;
     temp = (struct node *)malloc(sizeof(struct node));
-    temp->data = data;
-    temp->link = NULL;
     if (temp == NULL)
     {
         printf("Link is an empty\n");
     }
+    temp->data = data;
+    temp->link = NULL;
+
     ptr->link = temp;
     return temp;
 }
@@ -40,12 +38,13 @@ int main()
 {
     struct node *head, *ptr;
     head = (struct node *)malloc(sizeof(struct node));
-    head->data = 50;
-    head->link = NULL;
     if (head == NULL)
     {
         printf("Memory is not assigned\n");
     }
+    head->data = 50;
+    head->link = NULL;
+
     ptr = head;
     ptr = add_end(ptr, 30);
     ptr = add_end(ptr, 70);

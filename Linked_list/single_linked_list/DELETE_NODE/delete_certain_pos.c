@@ -36,39 +36,31 @@ int main()
 {
     struct node *head, *ptr;
     head = (struct node *)malloc(sizeof(struct node));
-    head->data = 15;
-    head->link = NULL;
     if (head == NULL)
     {
         printf("Memory is not assigned\n");
     }
+    head->data = 15;
+    head->link = NULL;
 
     struct node *second;
     second = (struct node *)malloc(sizeof(struct node));
-    second->data = 37;
-    second->link = NULL;
-    if (head == NULL)
+    if (second == NULL)
     {
         printf("Memory is not assigned\n");
     }
+    second->data = 37;
+    second->link = NULL;
     head->link = second;
 
     second = (struct node *)malloc(sizeof(struct node));
     second->data = 78;
     second->link = NULL;
-    if (head == NULL)
-    {
-        printf("Memory is not assigned\n");
-    }
     head->link->link = second;
 
     second = (struct node *)malloc(sizeof(struct node));
     second->data = 98;
     second->link = NULL;
-    if (head == NULL)
-    {
-        printf("Memory is not assigned\n");
-    }
     head->link->link->link = second;
 
     certain_pos(&head, 3);

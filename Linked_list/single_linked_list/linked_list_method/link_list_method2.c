@@ -9,12 +9,12 @@ struct node *add_end(struct node *ptr, int data)
 {
     struct node *temp;
     temp = (struct node *)malloc(sizeof(struct node));
-    temp->data = data;
-    temp->link = NULL;
     if (temp == NULL)
     {
         printf("Memory is not assigned\n");
     }
+    temp->data = data;
+    temp->link = NULL;
     ptr->link = temp;
     return temp;
 }

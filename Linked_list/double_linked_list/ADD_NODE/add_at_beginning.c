@@ -1,29 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
-
 struct node
 {
+    struct node *prev;
     int data;
-    struct node *link;
+    struct node *next;
 };
-// Create a function for adding node at end of linked list
-void add_end(struct node **head)
+struct node *add_begin(struct node *head)
 {
-    struct node *ptr, *temp;
-    ptr = *head;
+    struct node *temp;
     temp = (struct node *)malloc(sizeof(struct node));
     if (temp == NULL)
     {
         printf("Memory is not assigned\n");
     }
-    temp->data = 65;
-    temp->link = NULL;
+    temp->next = NULL;
+    temp->data = 40;
+    temp->prev = NULL;
 
-    while (ptr->link != NULL)
-    {
-        ptr = ptr->link;
-    }
-    ptr->link = temp;
+    temp->next = head;
+    head->prev = temp;
+    head = temp;
+    return head;
 }
 int main()
 {
@@ -33,8 +31,9 @@ int main()
     {
         printf("Memory is not assigned\n");
     }
-    head->data = 15;
-    head->link = NULL;
+    head->prev = NULL;
+    head->data = 20;
+    head->next = NULL;
 
     struct node *second;
     second = (struct node *)malloc(sizeof(struct node));
@@ -42,21 +41,17 @@ int main()
     {
         printf("Memory is not assigned\n");
     }
-    second->data = 34;
-    second->link = NULL;
-    head->link = second;
+    second->prev = NULL;
+    second->data = 30;
+    second->next = NULL;
+    head->next = second;
+    second->prev = head;
 
-    second = (struct node *)malloc(sizeof(struct node));
-    second->data = 78;
-    second->link = NULL;
-    head->link->link = second;
-
-    add_end(&head);
+    head = add_begin(head);
     ptr = head;
     while (ptr != NULL)
     {
         printf("Data = %d\n", ptr->data);
-        ptr = ptr->link;
+        ptr = ptr->next;
     }
-    return 0;
 }

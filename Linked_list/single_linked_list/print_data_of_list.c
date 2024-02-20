@@ -25,40 +25,35 @@ void print(struct node *head)
 int main()
 {
     struct node *head;
+
     head = (struct node *)malloc(sizeof(struct node));
+    if (head == NULL)
+    {
+        printf("Memory is not assigned\n");
+    }
     head->data = 15;
     head->link = NULL;
-    if (head == NULL)
-    {
-        printf("Memory is not assigned\n");
-    }
 
     struct node *second;
+
     second = (struct node *)malloc(sizeof(struct node));
-    second->data = 34;
-    second->link = NULL;
-    if (head == NULL)
+    if (second == NULL)
     {
         printf("Memory is not assigned\n");
     }
+    second->data = 34;
+    second->link = NULL;
+
     head->link = second;
 
     second = (struct node *)malloc(sizeof(struct node));
     second->data = 78;
     second->link = NULL;
-    if (head == NULL)
-    {
-        printf("Memory is not assigned\n");
-    }
     head->link->link = second;
 
     second = (struct node *)malloc(sizeof(struct node));
     second->data = 99;
     second->link = NULL;
-    if (head == NULL)
-    {
-        printf("Memory is not assigned\n");
-    }
     head->link->link->link = second;
 
     print(head);

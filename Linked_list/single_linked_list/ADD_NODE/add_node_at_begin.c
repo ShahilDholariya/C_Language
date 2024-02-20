@@ -9,48 +9,42 @@ struct node
 void add_begin(struct node **head)
 {
     struct node *temp, *ptr;
-    temp = (struct node *)malloc(sizeof(struct node));
-    temp->data = 10;
-    temp->link = NULL;
     if (temp == NULL)
     {
         printf("Memory is not assigned\n");
     }
-    else
-    {
-        temp->link = *head;
-        *head = temp;
-    }
+    temp = (struct node *)malloc(sizeof(struct node));
+    temp->data = 10;
+    temp->link = NULL;
+
+    temp->link = *head;
+    *head = temp;
 }
 
 int main()
 {
     struct node *head, *ptr;
     head = (struct node *)malloc(sizeof(struct node));
-    head->data = 15;
-    head->link = NULL;
     if (head == NULL)
     {
         printf("Memory is not assigned\n");
     }
+    head->data = 15;
+    head->link = NULL;
 
     struct node *second;
     second = (struct node *)malloc(sizeof(struct node));
-    second->data = 34;
-    second->link = NULL;
-    if (head == NULL)
+    if (second == NULL)
     {
         printf("Memory is not assigned\n");
     }
+    second->data = 34;
+    second->link = NULL;
     head->link = second;
 
     second = (struct node *)malloc(sizeof(struct node));
     second->data = 78;
     second->link = NULL;
-    if (head == NULL)
-    {
-        printf("Memory is not assigned\n");
-    }
     head->link->link = second;
 
     add_begin(&head);

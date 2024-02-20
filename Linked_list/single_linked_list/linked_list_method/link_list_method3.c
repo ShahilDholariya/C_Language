@@ -20,6 +20,7 @@ void add_node(struct node *ptr, int data)
 int main()
 {
     struct node *head;
+
     head = (struct node *)malloc(sizeof(struct node));
     if (head == NULL)
     {

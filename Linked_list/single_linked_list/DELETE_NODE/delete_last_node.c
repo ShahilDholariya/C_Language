@@ -31,35 +31,32 @@ struct node *dlt_last(struct node *head)
 }
 int main()
 {
-   struct node *head,*ptr;
+    struct node *head, *ptr;
     head = (struct node *)malloc(sizeof(struct node));
-    head->data = 15;
-    head->link = NULL;
     if (head == NULL)
     {
         printf("Memory is not assigned\n");
     }
+    head->data = 15;
+    head->link = NULL;
 
     struct node *second;
     second = (struct node *)malloc(sizeof(struct node));
-    second->data = 37;
-    second->link = NULL;
-    if (head == NULL)
+    if (second == NULL)
     {
         printf("Memory is not assigned\n");
     }
+    second->data = 37;
+    second->link = NULL;
+
     head->link = second;
 
     second = (struct node *)malloc(sizeof(struct node));
     second->data = 78;
     second->link = NULL;
-    if (head == NULL)
-    {
-        printf("Memory is not assigned\n");
-    }
     head->link->link = second;
 
-    head=dlt_last(head);
+    head = dlt_last(head);
     ptr = head;
     while (ptr != NULL)
     {

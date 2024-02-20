@@ -10,12 +10,13 @@ void certain_pos(struct node **head, int position)
     struct node *ptr, *temp;
     ptr = *head;
     temp = (struct node *)malloc(sizeof(struct node));
-    temp->data = 100;
-    temp->link = NULL;
     if (temp == NULL)
     {
         printf("Memory is not assigned\n");
     }
+    temp->data = 100;
+    temp->link = NULL;
+
     if (position == 1)
     {
         temp->link = *head;
@@ -36,39 +37,32 @@ int main()
 {
     struct node *head, *ptr;
     head = (struct node *)malloc(sizeof(struct node));
-    head->data = 15;
-    head->link = NULL;
     if (head == NULL)
     {
         printf("Memory is not assigned\n");
     }
+    head->data = 15;
+    head->link = NULL;
 
     struct node *second;
     second = (struct node *)malloc(sizeof(struct node));
-    second->data = 34;
-    second->link = NULL;
-    if (head == NULL)
+    if (second == NULL)
     {
         printf("Memory is not assigned\n");
     }
+    second->data = 34;
+    second->link = NULL;
+
     head->link = second;
 
     second = (struct node *)malloc(sizeof(struct node));
     second->data = 78;
     second->link = NULL;
-    if (head == NULL)
-    {
-        printf("Memory is not assigned\n");
-    }
     head->link->link = second;
 
     second = (struct node *)malloc(sizeof(struct node));
     second->data = 98;
     second->link = NULL;
-    if (head == NULL)
-    {
-        printf("Memory is not assigned\n");
-    }
     head->link->link->link = second;
 
     certain_pos(&head, 3);

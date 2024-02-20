@@ -5,28 +5,34 @@ struct node
     int data;
     struct node *link;
 };
-void reverse(struct node **head)
+void sorting(struct node **head)
 {
-    if (head == NULL)
+    if (*head == NULL)
     {
-        printf("Memory is not assigned\n");
+        printf("List is empty\n");
     }
-    struct node *prev, *current, *next;
-    prev = NULL;
-    current = next = *head;
-    while (next != NULL)
+    struct node *current, *next;
+    int temp;
+    current = *head;
+    while (current != NULL)
     {
-        next = next->link;
-        current->link = prev;
-        prev = current;
-        current = next;
+        next = current->link;
+        while (next != NULL)
+        {
+            if (current->data > next->data)
+            {
+                temp = current->data;
+                current->data = next->data;
+                next->data = temp;
+            }
+            next = next->link;
+        }
+        current = current->link;
     }
-    *head = prev;
 }
 struct node *add_end(struct node *ptr, int data)
 {
     struct node *temp;
-
     temp = (struct node *)malloc(sizeof(struct node));
     if (temp == NULL)
     {
@@ -38,21 +44,24 @@ struct node *add_end(struct node *ptr, int data)
     ptr->link = temp;
     return temp;
 }
+
 int main()
 {
-    struct node *head, *ptr;  
+    struct node *head, *ptr;
     head = (struct node *)malloc(sizeof(struct node));
     if (head == NULL)
     {
         printf("Memory is not assigned\n");
     }
-    head->data = 10;
+    head->data = 4;
     head->link = NULL;
 
     ptr = head;
-    ptr = add_end(ptr, 20);
-    ptr = add_end(ptr, 30);
-    ptr = add_end(ptr, 40);
+    ptr = add_end(ptr, 5);
+    ptr = add_end(ptr, 2);
+    ptr = add_end(ptr, 1);
+
+    printf("Original List:\n");
     ptr = head;
     while (ptr != NULL)
     {
@@ -60,13 +69,15 @@ int main()
         ptr = ptr->link;
     }
 
-    reverse(&head);
-    printf("Reversed List is:\n");
+    sorting(&head);
+
+    printf("Sorted List:\n");
     ptr = head;
     while (ptr != NULL)
     {
         printf("Data = %d\n", ptr->data);
         ptr = ptr->link;
     }
+
     return 0;
 }
