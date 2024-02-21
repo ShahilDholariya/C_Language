@@ -1,32 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
-
 struct node
 {
+    struct node *prev;
     int data;
-    struct node *link;
+    struct node *next;
 };
-// Create a function for adding node at end of linked list
-void add_at_end(struct node **head)
+struct node *dlt_first(struct node *head)
 {
-    int new_num;
-    printf("Enter a new number that you want to add :");
-    scanf("%d", &new_num);
-    struct node *ptr, *temp;
-    ptr = *head;
-    temp = (struct node *)malloc(sizeof(struct node));
-    if (temp == NULL)
+    if (head == NULL)
     {
-        printf("Memory is not assigned\n");
+        printf("List is an Empty\n");
     }
-    temp->data = new_num;
-    temp->link = NULL;
-
-    while (ptr->link != NULL)
+    else
     {
-        ptr = ptr->link;
+        head = head->next;
+        free(head->prev);
+        head->prev = NULL;
     }
-    ptr->link = temp;
+    return head;
 }
 // Create a function of adding node at end of list
 struct node *add_end(struct node *ptr, int data)
@@ -37,45 +29,51 @@ struct node *add_end(struct node *ptr, int data)
     {
         printf("Memory is not assigned\n");
     }
+    temp->prev = NULL;
     temp->data = data;
-    temp->link = NULL;
+    temp->next = NULL;
 
-    ptr->link = temp;
+    ptr->next = temp;
     return temp;
 }
 int main()
 {
-    int num, pos;
+    int num;
     int a[100];
-    printf("Enter the number of nodes :");
+    printf("Enter the number of nodes:");
     scanf("%d", &num);
-    printf("Enter the value of node :\n");
+    printf("Enter the value of nodes:\n");
     for (int i = 0; i < num; i++)
     {
         scanf("%d", &a[i]);
     }
     struct node *head, *ptr;
+
     head = (struct node *)malloc(sizeof(struct node));
     if (head == NULL)
     {
-        printf("Memory is not assigned\n");
+        printf("List is an Empty\n");
     }
     else
     {
+        head->prev = NULL;
         head->data = a[0];
-        head->link = NULL;
+        head->next = NULL;
     }
     ptr = head;
     for (int i = 1; i < num; i++)
     {
         ptr = add_end(ptr, a[i]);
     }
-    add_at_end(&head);
+
+    head = dlt_first(head);
+
     ptr = head;
+    printf("Your new list is:\n");
     while (ptr != NULL)
     {
         printf("Data = %d\n", ptr->data);
-        ptr = ptr->link;
+        ptr = ptr->next;
     }
     return 0;
 }

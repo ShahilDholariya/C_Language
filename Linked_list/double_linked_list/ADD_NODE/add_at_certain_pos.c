@@ -2,40 +2,41 @@
 #include <stdlib.h>
 struct node
 {
+    struct node *prev;
     int data;
-    struct node *link;
+    struct node *next;
 };
-// Create a function for adding a node at certain position
-void certain_pos(struct node **head, int position)
+struct node *certain_pos(struct node *head, int position, int new_num)
 {
-    int new_num;
-    printf("Enter a new number that you want to add :");
-    scanf("%d", &new_num);
-    struct node *ptr, *temp;
-    ptr = *head;
+    struct node *temp, *ptr;
     temp = (struct node *)malloc(sizeof(struct node));
     if (temp == NULL)
     {
-        printf("Memory is not assigned\n");
+        printf("Memory is not allocated\n");
     }
+    temp->prev = NULL;
     temp->data = new_num;
-    temp->link = NULL;
-
+    temp->next = NULL;
+    ptr = head;
     if (position == 1)
     {
-        temp->link = *head;
-        *head = temp;
+        temp->next = head;
+        head->prev = temp;
+        head = temp;
+        return head;
     }
     else
     {
         while ((position - 1) != 1)
         {
-            ptr = ptr->link;
+            ptr = ptr->next;
             position--;
         }
-        temp->link = ptr->link;
-        ptr->link = temp;
+        temp->next = ptr->next;
+        ptr->next = temp;
+        temp->prev = ptr;
     }
+    return head;
 }
 // Create a function of adding node at end of list
 struct node *add_end(struct node *ptr, int data)
@@ -46,10 +47,11 @@ struct node *add_end(struct node *ptr, int data)
     {
         printf("Memory is not assigned\n");
     }
+    temp->prev = NULL;
     temp->data = data;
-    temp->link = NULL;
+    temp->next = NULL;
 
-    ptr->link = temp;
+    ptr->next = temp;
     return temp;
 }
 int main()
@@ -60,7 +62,8 @@ int main()
     scanf("%d", &num);
     if (num <= 0)
     {
-        printf("Please Enter Valid number of node\n");
+        printf("Please Enter valid number of node\n");
+        return 0;
     }
     printf("Enter the value of node :\n");
     for (int i = 0; i < num; i++)
@@ -71,10 +74,12 @@ int main()
     scanf("%d", &pos);
     if (pos > (num + 1))
     {
-        printf("you entered invalid position.\nPlease Enter valid position.\n ");
+        printf("You entered invalid position.\nPlease Try Agian\n");
         return 0;
     }
-
+    int new_num;
+    printf("Enter a new number that you want to add :");
+    scanf("%d", &new_num);
     struct node *head, *ptr;
     head = (struct node *)malloc(sizeof(struct node));
     if (head == NULL)
@@ -83,24 +88,23 @@ int main()
     }
     else
     {
+        head->prev = NULL;
         head->data = a[0];
-        head->link = NULL;
+        head->next = NULL;
     }
-
     ptr = head;
     for (int i = 1; i < num; i++)
     {
         ptr = add_end(ptr, a[i]);
     }
 
-    certain_pos(&head, pos);
-
+    head = certain_pos(head, pos, new_num);
     ptr = head;
-    printf("new list is :\n");
+    printf("Your new list is:\n");
     while (ptr != NULL)
     {
         printf("Data = %d\n", ptr->data);
-        ptr = ptr->link;
+        ptr = ptr->next;
     }
     return 0;
 }

@@ -39,18 +39,30 @@ struct node *add_end(struct node *ptr, int data)
 }
 int main()
 {
+    int num, pos;
+    int a[100];
+    printf("Enter the number of nodes :");
+    scanf("%d", &num);
+    printf("Enter the value of node :\n");
+    for (int i = 0; i < num; i++)
+    {
+        scanf("%d", &a[i]);
+    }
     struct node *head, *ptr;
     head = (struct node *)malloc(sizeof(struct node));
     if (head == NULL)
     {
         printf("Memory is not assigned\n");
     }
-    head->data = 20;
+    else{
+    head->data = a[0];
     head->link = NULL;
-
+    }
     ptr = head;
-    ptr = add_end(ptr, 30);
-    ptr = add_end(ptr, 40);
+     for (int i = 1; i < num; i++)
+    {
+        ptr = add_end(ptr, a[i]);
+    }
     ptr = head;
     while (ptr != NULL)
     {
