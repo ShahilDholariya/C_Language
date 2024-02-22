@@ -37,7 +37,7 @@ void certain_pos(struct node **head, int position)
         ptr->link = temp;
     }
 }
-// Create a function of adding node at end of list
+// Create a function for adding node at end of list
 struct node *add_end(struct node *ptr, int data)
 {
     struct node *temp;

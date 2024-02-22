@@ -5,6 +5,7 @@ struct node
     int data;
     struct node *link;
 };
+ // Create a function for deleting last node of list
 struct node *dlt_last(struct node *head)
 {
     if (head == NULL)
@@ -29,7 +30,7 @@ struct node *dlt_last(struct node *head)
     }
     return head;
 }
-// Create a function of adding node at end of list
+// Create a function for adding node at end of list
 struct node *add_end(struct node *ptr, int data)
 {
     struct node *temp;
@@ -46,7 +47,7 @@ struct node *add_end(struct node *ptr, int data)
 }
 int main()
 {
-    int num, pos;
+    int num;
     int a[100];
     printf("Enter the number of nodes :");
     scanf("%d", &num);

@@ -23,6 +23,7 @@ void reverse(struct node **head)
     }
     *head = prev;
 }
+// Create a function for adding node at end of list
 struct node *add_end(struct node *ptr, int data)
 {
     struct node *temp;
@@ -40,7 +41,7 @@ struct node *add_end(struct node *ptr, int data)
 }
 int main()
 {
-    int num, pos;
+    int num;
     int a[100];
     printf("Enter the number of nodes :");
     scanf("%d", &num);

@@ -6,21 +6,34 @@ struct node
     int data;
     struct node *next;
 };
-// Create a function for adding last node of list
-struct node *add_at_end(struct node *head, int new_num)
+struct node *dlt_certain(struct node *head, int position)
 {
-    struct node *temp, *ptr;
-    temp = (struct node *)malloc(sizeof(struct node));
-    temp->prev = NULL;
-    temp->data = new_num;
-    temp->next = NULL;
-    ptr = head;
-    while (ptr->next != NULL)
+    struct node *prev, *current;
+    if (head == NULL)
     {
-        ptr = ptr->next;
+        printf("List is an Empty");
+        return 0;
     }
-    ptr->next = temp;
-    temp->prev = ptr;
+    current = head;
+    if (position == 1)
+    {
+        head = head->next;
+        free(current);
+        head->prev = NULL;
+    }
+    else
+    {
+        while (position != 1)
+        {
+            prev = current;
+            current = current->next;
+            position--;
+        }
+        prev->next = current->next;
+        prev->next->prev = prev;
+        free(current);
+        current = NULL
+    }
     return head;
 }
 // Create a function for adding node at end of list
@@ -28,10 +41,6 @@ struct node *add_end(struct node *ptr, int data)
 {
     struct node *temp;
     temp = (struct node *)malloc(sizeof(struct node));
-    if (temp == NULL)
-    {
-        printf("Memory is not assigned\n");
-    }
     temp->prev = NULL;
     temp->data = data;
     temp->next = NULL;
@@ -41,7 +50,7 @@ struct node *add_end(struct node *ptr, int data)
 }
 int main()
 {
-    int num, new_num;
+    int num, pos;
     int a[100];
     printf("Enter the number of nodes :");
     scanf("%d", &num);
@@ -50,8 +59,13 @@ int main()
     {
         scanf("%d", &a[i]);
     }
-    printf("Enter a new number that you want to add :");
-    scanf("%d", &new_num);
+    printf("Enter the position that you want to delete :");
+    scanf("%d", &pos);
+    if (pos > num)
+    {
+        printf("you entered invalid position.\nPlease Enter valid position.\n ");
+        return 0;
+    }
     struct node *head, *ptr;
     head = (struct node *)malloc(sizeof(struct node));
     if (head == NULL)
@@ -69,11 +83,14 @@ int main()
     {
         ptr = add_end(ptr, a[i]);
     }
-    head = add_at_end(head, new_num);
+
+    head = dlt_certain(head, pos);
     ptr = head;
+    printf("Your new list is:\n");
     while (ptr != NULL)
     {
         printf("Data = %d\n", ptr->data);
         ptr = ptr->next;
     }
+    return 0;
 }

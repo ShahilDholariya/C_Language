@@ -5,7 +5,7 @@ struct node
     int data;
     struct node *link;
 };
-void dlt_entire_list(struct node *head)
+void dlt_entire_list(struct node *head) // create a function for deleting entire list
 {
     struct node *ptr = head;
     if (head == NULL)
@@ -20,6 +20,7 @@ void dlt_entire_list(struct node *head)
     }
     printf("Delete Entire list\n");
 }
+// Create a function for adding node at end of list
 struct node *add_end(struct node *ptr, int data)
 {
     struct node *temp;

@@ -6,6 +6,7 @@ struct node
     int data;
     struct node *next;
 };
+// Create a function for adding node at certain position of list
 struct node *certain_pos(struct node *head, int position, int new_num)
 {
     struct node *temp, *ptr;
@@ -38,7 +39,7 @@ struct node *certain_pos(struct node *head, int position, int new_num)
     }
     return head;
 }
-// Create a function of adding node at end of list
+// Create a function for adding node at end of list
 struct node *add_end(struct node *ptr, int data)
 {
     struct node *temp;
@@ -56,7 +57,7 @@ struct node *add_end(struct node *ptr, int data)
 }
 int main()
 {
-    int num, pos;
+    int num, pos,new_num;
     int a[100];
     printf("Enter the number of nodes :");
     scanf("%d", &num);
@@ -77,7 +78,6 @@ int main()
         printf("You entered invalid position.\nPlease Try Agian\n");
         return 0;
     }
-    int new_num;
     printf("Enter a new number that you want to add :");
     scanf("%d", &new_num);
     struct node *head, *ptr;

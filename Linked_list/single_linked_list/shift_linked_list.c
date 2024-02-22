@@ -23,6 +23,7 @@ void shifting(struct node **head)
     prev->link = NULL;
     *head = current;
 }
+// Create a function for adding node at end of list
 struct node *add_end(struct node *ptr, int data)
 {
     struct node *temp;
@@ -39,7 +40,7 @@ struct node *add_end(struct node *ptr, int data)
 }
 int main()
 {
-    int num, pos;
+    int num;
     int a[100];
     printf("Enter the number of nodes :");
     scanf("%d", &num);
@@ -54,12 +55,13 @@ int main()
     {
         printf("Memory is not assigned\n");
     }
-    else{
-    head->data = a[0];
-    head->link = NULL;
+    else
+    {
+        head->data = a[0];
+        head->link = NULL;
     }
     ptr = head;
-     for (int i = 1; i < num; i++)
+    for (int i = 1; i < num; i++)
     {
         ptr = add_end(ptr, a[i]);
     }

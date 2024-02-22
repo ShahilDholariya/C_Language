@@ -6,6 +6,8 @@ struct node
     int data;
     struct node *next;
 };
+
+// Create a function for deleting first node of list
 struct node *dlt_first(struct node *head)
 {
     if (head == NULL)
@@ -20,7 +22,7 @@ struct node *dlt_first(struct node *head)
     }
     return head;
 }
-// Create a function of adding node at end of list
+// Create a function for adding node at end of list
 struct node *add_end(struct node *ptr, int data)
 {
     struct node *temp;

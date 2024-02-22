@@ -6,7 +6,7 @@ struct node
     int data;
     struct node *link;
 };
-
+// create a function for counting a number of nodes
 void count_node(struct node *head)
 {
     int count = 0;

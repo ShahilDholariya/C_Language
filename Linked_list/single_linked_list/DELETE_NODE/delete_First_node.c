@@ -5,8 +5,8 @@ struct node
     int data;
     struct node *link;
 };
-
-struct node *dlt_first(struct node *head) // Create a function for deleting first node
+// Create a function for deleting first node of list
+struct node *dlt_first(struct node *head)
 {
     if (head == NULL)
     {
@@ -18,7 +18,7 @@ struct node *dlt_first(struct node *head) // Create a function for deleting firs
     ptr = NULL;
     return head;
 }
-// Create a function of adding node at end of list
+// Create a function for adding node at end of list
 struct node *add_end(struct node *ptr, int data)
 {
     struct node *temp;
@@ -35,7 +35,7 @@ struct node *add_end(struct node *ptr, int data)
 }
 int main()
 {
-    int num, pos;
+    int num;
     int a[100];
     printf("Enter the number of nodes :");
     scanf("%d", &num);
@@ -50,11 +50,12 @@ int main()
     {
         printf("Memory is not assigned\n");
     }
-    else{
-    head->data = a[0];
-    head->link = NULL;
+    else
+    {
+        head->data = a[0];
+        head->link = NULL;
     }
-    ptr=head;
+    ptr = head;
     for (int i = 1; i < num; i++)
     {
         ptr = add_end(ptr, a[i]);

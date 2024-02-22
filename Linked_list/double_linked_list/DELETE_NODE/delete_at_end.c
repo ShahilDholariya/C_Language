@@ -6,21 +6,16 @@ struct node
     int data;
     struct node *next;
 };
-// Create a function for adding last node of list
-struct node *add_at_end(struct node *head, int new_num)
+// Create a function for deleting last node of list
+struct node *dlt_end(struct node *head)
 {
-    struct node *temp, *ptr;
-    temp = (struct node *)malloc(sizeof(struct node));
-    temp->prev = NULL;
-    temp->data = new_num;
-    temp->next = NULL;
-    ptr = head;
-    while (ptr->next != NULL)
+    struct node *ptr = head;
+    while (ptr->next->next != NULL)
     {
         ptr = ptr->next;
     }
-    ptr->next = temp;
-    temp->prev = ptr;
+    free(ptr->next);
+    ptr->next = NULL;
     return head;
 }
 // Create a function for adding node at end of list
@@ -28,35 +23,29 @@ struct node *add_end(struct node *ptr, int data)
 {
     struct node *temp;
     temp = (struct node *)malloc(sizeof(struct node));
-    if (temp == NULL)
-    {
-        printf("Memory is not assigned\n");
-    }
     temp->prev = NULL;
     temp->data = data;
     temp->next = NULL;
-
     ptr->next = temp;
     return temp;
 }
 int main()
 {
-    int num, new_num;
+    int num;
     int a[100];
-    printf("Enter the number of nodes :");
+    printf("Enter the number of nodes:");
     scanf("%d", &num);
-    printf("Enter the value of node :\n");
+    printf("Enter the value of nodes:\n");
     for (int i = 0; i < num; i++)
     {
         scanf("%d", &a[i]);
     }
-    printf("Enter a new number that you want to add :");
-    scanf("%d", &new_num);
     struct node *head, *ptr;
+
     head = (struct node *)malloc(sizeof(struct node));
     if (head == NULL)
     {
-        printf("Memory is not assigned\n");
+        printf("List is an Empty\n");
     }
     else
     {
@@ -69,11 +58,15 @@ int main()
     {
         ptr = add_end(ptr, a[i]);
     }
-    head = add_at_end(head, new_num);
+
+    head = dlt_end(head);
+
     ptr = head;
+    printf("Your new list is:\n");
     while (ptr != NULL)
     {
         printf("Data = %d\n", ptr->data);
         ptr = ptr->next;
     }
+    return 0;
 }
