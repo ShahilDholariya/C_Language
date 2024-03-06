@@ -23,10 +23,10 @@ int main()
     //  cal_t cal1={&add};
     //  cal_t cal2={&sub};
     //  cal_t cal3={&mul};
-    cal_t c[] = {{&add}, {&sub}, {&mul}};
+    cal_t c[] = {{&add}, {&sub}, {&mul}}; // initialize fun-pointer
     printf("Enter value of a & b\n");
     scanf("%d %d", &a, &b);
-    int result1 = c[0].fp(a, b);
+    int result1 = c[0].fp(a, b); // calling function using fun-pointer
     int result2 = c[1].fp(a, b);
     int result3 = c[2].fp(a, b);
 
