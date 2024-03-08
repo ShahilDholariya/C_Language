@@ -27,7 +27,6 @@ int getSquare(int number)
 
 int main()
 {
-
     int inputNumber;
     printf("Enter the number:");
     scanf("%d", &inputNumber);
