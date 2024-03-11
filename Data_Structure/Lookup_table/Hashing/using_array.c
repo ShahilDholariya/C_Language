@@ -60,7 +60,7 @@ int main()
     del(10);  
     printf("After the deletion hash table\n");  
     print();  
-    printf("\n")
+    printf("\n");
     printf("Searching value 4\n");
     search(4);
     printf("Searching value 10\n");
