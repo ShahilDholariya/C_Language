@@ -31,6 +31,14 @@ void search(int val)
     else
         printf("Search Not Found\n");
 }
+void del(int val)  
+{  
+    int key = val % size;  
+    if(array[key] == val)  
+        array[key] = -1;  
+    else  
+        printf("%d not present in the hash table\n",val);  
+}  
 void print()
 {
     int i;
@@ -48,6 +56,11 @@ int main()
     printf("Hash table\n");
     print();
     printf("\n");
+    printf("Deleting value 10..\n");  
+    del(10);  
+    printf("After the deletion hash table\n");  
+    print();  
+    printf("\n")
     printf("Searching value 4\n");
     search(4);
     printf("Searching value 10\n");
